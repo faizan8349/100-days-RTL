@@ -1,21 +1,37 @@
 
-# 100-days-RTL
+// Code your design here
+module m();
+  
+  reg a,b,sum,carry;
+  
+  always @(*)
+    
+    begin 
+      
+      sum =a^b;
+      carry =a&b;
+  end 
+  
+  
+ initial 
+    #20 $finish();
+ 
+  initial 
+    begin 
+    #2  a=0; b=0;
+      #2 a=0; b=1;
+      #2 a=1; b=0;
+      #2 a=1; b=1;
+    end
+  
+  initial 
+    $monitor("a=%d,b=%d,sum=%d,carry=%d",a,b,sum,carry);
+ 
+ initial 
+   begin 
+    $dumpfile(dump.vcd);
+    $dumpvars();
+   end 
+ 
+endmodule 
 
-//HALF ADDER USING GATE LEVEL
-
-module halfadder(a,b,c,s);
-
-input a,b;
-
-output s,c;
-
-wire w1,w2,w3,w4; 
-
- not (w1,a);
-  not (w2,b);
-  and (w3,w1,b);
-  and (w4,w2,a);
-  or (s,w2,w4);  
-  and  (c,a,b);
-
-endmodule
