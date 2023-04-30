@@ -1,0 +1,42 @@
+
+module m();
+  
+  reg a,b,c,sum,carry;
+  
+  always @(*)
+    
+    begin 
+      
+      sum =a^b^c;
+      carry =a&b|b&c|c&a;
+  end 
+  
+  
+ initial 
+    #20 $finish();
+ 
+  initial 
+    begin 
+      #2  a=0; b=0; c=0;
+      #2  a=0; b=0; c=1;
+      #2  a=0; b=1; c=0;
+      #2  a=0; b=1; c=1;
+      #2  a=1; b=0; c=0;
+      #2  a=1; b=0; c=1;
+      #2  a=1; b=1; c=0;
+      #2  a=1; b=1; c=1;
+    end
+  
+  initial 
+    $monitor("a=%d,b=%d,c=%d,sum=%d,carry=%d",a,b,c,sum,carry);
+
+ initial 
+    begin 
+      
+      $dumpfile("dump.vcd");
+      $dumpvars();
+    end 
+ 
+endmodule 
+
+
