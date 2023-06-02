@@ -6,7 +6,7 @@ module function_code;
   
   function [3:0] sum(input [3:0] a,b);
     
-    return =a+b;
+    return a+b;
     
   endfunction 
   
